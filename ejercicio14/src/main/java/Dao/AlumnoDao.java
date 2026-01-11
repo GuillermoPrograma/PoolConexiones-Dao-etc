@@ -14,6 +14,6 @@ public interface AlumnoDao {
 
 	int actualizar(AlumnoEjercicio14 al);
 	
-	void delete(int id);
+	int delete(int id);
 	
 }

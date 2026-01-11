@@ -114,14 +114,47 @@ public class AlumnoDaoimpl implements AlumnoDao{
 
 	@Override
 	public int actualizar(AlumnoEjercicio14 al) {
-		// TODO Auto-generated method stub
-		return 0;
+	String sql = "Update alumno set Nombre=?, Apellidos=?,Genero =?, FechaNacimiento=?,Ciclo =?, Curso=?, Grupo=? "
+			+ "where Nia=?";
+	int result = -1; //He puesto -1 porque no se que poner
+	try(Connection conexion = MyDataSource.getConnection())
+	{
+		PreparedStatement ps = conexion.prepareStatement(sql);
+		
+		ps.setString(1, al.getNombre());
+		ps.setString(2, al.getApellidos());
+		ps.setString(3, Character.toString(al.getGenero()));
+		ps.setDate(4, Date.valueOf(al.getFecha()));
+		ps.setString(5, al.getCiclo());
+		ps.setString(6, al.getCurso());
+		ps.setString(7, al.getGrupo());
+		ps.setInt(8, al.getNia());
+		
+		result = ps.executeUpdate();
+		
+	} catch (Exception e) {
+		 throw new RuntimeException(e);
+	}
+		return result;
 	}
 
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+	public int delete(int id) {
+	
+		String sql = "Delete from alumno where Nia Like ?";
+		int result = -1;
+		try(Connection conexion = MyDataSource.getConnection())
+		{
+			PreparedStatement ps = conexion.prepareStatement(sql);
+			ps.setInt(1, id);
+			result = ps.executeUpdate();
+			return result;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			 throw new RuntimeException(e); 
+			 
+		}
 	}
 
 }
