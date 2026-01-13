@@ -76,7 +76,7 @@ public class AlumnoDaoimpl implements AlumnoDao {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			throw new RuntimeException(e);
+			return null;
 		}
 
 	}
