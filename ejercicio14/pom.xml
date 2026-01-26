@@ -16,7 +16,12 @@
     <version>5.0.1</version>
 </dependency>
 
-</dependencies>
+    <dependency>
+    	<groupId>guillermoGarcia</groupId>
+    	<artifactId>Ejercicio15</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 <build>
     <plugins>
         <plugin>

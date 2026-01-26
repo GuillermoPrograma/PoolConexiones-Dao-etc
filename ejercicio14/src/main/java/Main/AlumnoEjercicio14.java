@@ -164,6 +164,7 @@ public class AlumnoEjercicio14 implements Serializable{
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
+	
 
 	@Override
 	public String toString() {

@@ -1,6 +1,9 @@
 package Dao;
 
 import java.sql.Connection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +17,7 @@ import ejercicio14.pool.MyDataSource;
 public class AlumnoDaoimpl implements AlumnoDao{
 
 	private static AlumnoDaoimpl instance;
-	
+	private static final Logger log = LoggerFactory.getLogger(AlumnoDaoimpl.class); //pruebo a hacer un log para todo sql
 	
 	static 
 	{
@@ -51,8 +54,8 @@ public class AlumnoDaoimpl implements AlumnoDao{
 			 result = pstm.executeUpdate();
 		 } 
 		 catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 log.error("Error al insertar alumno con NIA={}", al.getNia(), e);
+			
 		}
 		 
 		 return result;
@@ -80,9 +83,10 @@ public class AlumnoDaoimpl implements AlumnoDao{
 				else
 				return null;
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 throw new RuntimeException(e);
+			 log.error("Error al recoger alumno por NIA", e);
+			 return null;
 		}
 		
 
@@ -108,7 +112,8 @@ public class AlumnoDaoimpl implements AlumnoDao{
 			return alumnos;
 		}
 		catch (Exception e) {
-			 throw new RuntimeException(e); //queria devolver un null pero chatgpt me ha dicho que con esta exception mejor
+			 log.error("Error al recoger alumnos", e);
+			 return null;
 		}
 	}
 
@@ -133,7 +138,7 @@ public class AlumnoDaoimpl implements AlumnoDao{
 		result = ps.executeUpdate();
 		
 	} catch (Exception e) {
-		 throw new RuntimeException(e);
+		 log.error("Error al actualizar alumno ", e);
 	}
 		return result;
 	}
@@ -152,7 +157,8 @@ public class AlumnoDaoimpl implements AlumnoDao{
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			 throw new RuntimeException(e); 
+			 log.error("Error al borrar alumno por NIA", e);
+			 return -1;
 			 
 		}
 	}

@@ -14,7 +14,7 @@ public class MyDataSource {
 	
 	static 
 	{
-		config.setJdbcUrl("jdbc:mysql://localhost/modeloalumnos?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false");
+		config.setJdbcUrl("jdbc:mysql://localhost/modelo15?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false");
 		config.setUsername("user");
 		config.setPassword("Manager");
 		config.addDataSourceProperty("maximumPoolSize", 1);
